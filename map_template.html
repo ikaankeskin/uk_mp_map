@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+    <h1>Select party</h1>
+    <select id="party-select">
+        <option value="">--Please choose a party--</option>
+        {% for party in party %}
+        <option value="{{ party }}">{{ party }}</option>
+        {% endfor %}
+    </select>
+    <button id="clear-button">Clear Selection</button>
+    <button id="download-button">Download selected locations</button>
+    <button id="add-marker-button">Add Marker</button>
+    <div id="map" style="height: 80vh;"></div>
+    <script>
+        let addMarkerMode = false;
+        let customIcon = L.icon({
+            iconUrl: 'custom-icon.png',
+            iconSize: [38, 95],
+            iconAnchor: [22, 94],
+            popupAnchor: [-3, -76]
+        });
+
+        function convertToCSV(objArray) {
+            const array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+            let str = `${Object.keys(array[0]).map(value => `"${value}"`).join(",")}\r\n`;
+
+            for (let i = 0; i < array.length; i++) {
+                let line = '';
+                for (let index in array[i]) {
+                    if (line !== '') line += ','
+                    line += `"${array[i][index]}"`;
+                }
+                str += line + '\r\n';
+            }
+            return str;
+        }   
+
+        let selectedFeatures = [];
+        
+        let geojson = {{ geojson|tojson|safe }};
+        function createMap(geojson) {
+        let latitudes = geojson.features.map(feature => feature.geometry.coordinates[1]);
+        let longitudes = geojson.features.map(feature => feature.geometry.coordinates[0]);
+        let mapCenter = [latitudes.reduce((a, b) => a + b, 0) / latitudes.length, longitudes.reduce((a, b) => a + b, 0) / longitudes.length];
+
+        let map = L.map('map').setView(mapCenter, 10);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        return map;
+    }
+    let markers = L.layerGroup();
+
+    function loadMarkers(map, geojson, selected_party) {
+        function updateMarkers() {
+            markers.clearLayers();
+
+            if (selected_party !== "") {
+                geojson.features.forEach(feature => {
+                    if (feature.properties.party === selected_party) {
+                        let coordinates = feature.geometry.coordinates;
+                        let latLng = L.latLng(coordinates[1], coordinates[0]);
+                        if (map.getBounds().contains(latLng)) {
+                            let marker = L.marker(latLng, { opacity: selectedFeatures.includes(feature) ? 1 : 0.5 });
+
+                            let popupContent = `
+                                <p><strong>Party:</strong> ${feature.properties.party}</p>
+                                <p><strong>Constituency:</strong> ${feature.properties.constituency}</p>
+                                <p><strong>Name:</strong> ${feature.properties.name}</p>
+                            `;
+
+                            marker.bindPopup(popupContent);
+                            markers.addLayer(marker);
+
+                            marker.on('click', function() {
+                                if (this.options.opacity !== 1) {
+                                    this.setOpacity(1);
+                                    selectedFeatures.push(feature);
+                                } else {
+                                    this.setOpacity(0.5);
+                                    selectedFeatures = selectedFeatures.filter(f => f !== feature);
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        }
+
+        map.on('moveend', updateMarkers);
+        updateMarkers();
+    }
+
+    let map = createMap(geojson);
+    markers.addTo(map);
+
+    map.on('click', function(e) {
+        if (addMarkerMode) {
+            let marker = L.marker(e.latlng, {icon: customIcon}).addTo(map);
+            marker.bindPopup('<input type="text" id="input-field" placeholder="Enter some info">');
+        }
+    });
+
+    document.getElementById('party-select').addEventListener('change', function () {
+        let selected_party = this.value;
+        let filtered_geojson = {
+            'type': 'FeatureCollection',
+            'features': geojson.features.filter(feature => feature.properties.party === selected_party)
+        };
+        loadMarkers(map, filtered_geojson, selected_party);
+    });
+
+    document.getElementById('download-button').addEventListener('click', function () {
+        let csv = convertToCSV(selectedFeatures.map(feature => feature.properties));
+
+        let downloadLink = document.createElement('a');
+        downloadLink.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+        downloadLink.target = '_blank';
+        downloadLink.download = 'selected_locations.csv';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+    });
+    
+    document.getElementById('clear-button').addEventListener('click', function () {
+        selectedFeatures = [];
+        markers.eachLayer(function (layer) {
+            layer.setOpacity(0.5);
+        });
+    });
+
+    document.getElementById('add-marker-button').addEventListener('click', function () {
+        addMarkerMode = !addMarkerMode;
+    });
+</script>
+</body>
+</html>
