@@ -13,6 +13,9 @@
         <option value="{{ party }}">{{ party }}</option>
         {% endfor %}
     </select>
+    <h1>Select Year</h1>
+    <label for="year-slider">Year Range: </label>
+    <input type="range" id="year-slider">
     <button id="clear-button">Clear Selection</button>
     <button id="download-button">Download selected locations</button>
     <button id="add-marker-button">Add Marker</button>
@@ -42,6 +45,7 @@
         }   
 
         let selectedFeatures = [];
+        let selectedYear; 
         
         let geojson = {{ geojson|tojson|safe }};
         function createMap(geojson) {
@@ -65,7 +69,7 @@
 
             if (selected_party !== "") {
                 geojson.features.forEach(feature => {
-                    if (feature.properties.party === selected_party) {
+                    if (feature.properties.party === selected_party && feature.properties.year === selectedYear) {
                         let coordinates = feature.geometry.coordinates;
                         let latLng = L.latLng(coordinates[1], coordinates[0]);
                         if (map.getBounds().contains(latLng)) {
@@ -75,6 +79,7 @@
                                 <p><strong>Party:</strong> ${feature.properties.party}</p>
                                 <p><strong>Constituency:</strong> ${feature.properties.constituency}</p>
                                 <p><strong>Name:</strong> ${feature.properties.name}</p>
+                                <p><strong>Year:</strong> ${feature.properties.year}</p>
                             `;
 
                             marker.bindPopup(popupContent);
@@ -140,6 +145,36 @@
     document.getElementById('add-marker-button').addEventListener('click', function () {
         addMarkerMode = !addMarkerMode;
     });
+
+    // Calculate the minimum and maximum years from the dataset
+    let years = geojson.features.map(feature => parseInt(feature.properties.year)); // Make sure years are integers
+    let minYear = Math.min(...years);
+    let maxYear = Math.max(...years);
+
+    selectedYear = maxYear;
+
+    // Set the min and max attributes of the slider dynamically
+    let yearSlider = document.getElementById('year-slider');
+    yearSlider.setAttribute('min', minYear);
+    yearSlider.setAttribute('max', maxYear);
+    yearSlider.value = maxYear;
+
+    // Add a label to display the current year
+    let yearLabel = document.createElement('span');
+    yearLabel.id = 'year-label';
+    yearLabel.innerHTML = maxYear;
+    yearSlider.insertAdjacentElement('afterend', yearLabel);
+
+    document.getElementById('year-slider').addEventListener('input', function () {
+        selectedYear = parseInt(this.value); // Convert to integer to ensure type consistency
+        document.getElementById('year-label').innerHTML = selectedYear;
+        let selected_party = document.getElementById('party-select').value;
+        let filtered_geojson = {
+            'type': 'FeatureCollection',
+            'features': geojson.features.filter(feature => feature.properties.party === selected_party && parseInt(feature.properties.year) === selectedYear) // Convert feature year to integer
+        };
+        loadMarkers(map, filtered_geojson, selected_party);
+});
 </script>
 </body>
 </html>

@@ -1,0 +1,527 @@
+party,year,counts
+Alba Party,2021,2
+Alliance,2010,43
+Alliance,2011,77
+Alliance,2012,65
+Alliance,2013,98
+Alliance,2014,74
+Alliance,2015,27
+Alliance,2019,1
+Alliance,2020,88
+Alliance,2021,26
+Change UK - The Independent Group,2019,90
+Conservative,1979,16859
+Conservative,1980,35358
+Conservative,1981,30691
+Conservative,1982,33178
+Conservative,1983,27338
+Conservative,1984,35694
+Conservative,1985,37551
+Conservative,1986,37926
+Conservative,1987,30419
+Conservative,1988,36536
+Conservative,1989,36160
+Conservative,1990,36522
+Conservative,1991,32754
+Conservative,1992,26169
+Conservative,1993,34535
+Conservative,1994,30846
+Conservative,1995,31215
+Conservative,1996,32908
+Conservative,1997,17768
+Conservative,1998,20668
+Conservative,1999,19845
+Conservative,2000,21344
+Conservative,2001,16292
+Conservative,2002,13856
+Conservative,2003,16196
+Conservative,2004,15699
+Conservative,2005,13957
+Conservative,2006,16133
+Conservative,2007,16124
+Conservative,2008,18647
+Conservative,2009,16003
+Conservative,2010,26766
+Conservative,2011,37319
+Conservative,2012,32900
+Conservative,2013,34647
+Conservative,2014,32352
+Conservative,2015,32745
+Conservative,2016,38301
+Conservative,2017,35540
+Conservative,2018,44280
+Conservative,2019,37273
+Conservative,2020,38595
+Conservative,2021,10631
+Conservative Independent,2008,12
+Democratic Unionist Party,1979,143
+Democratic Unionist Party,1980,135
+Democratic Unionist Party,1981,96
+Democratic Unionist Party,1982,254
+Democratic Unionist Party,1983,209
+Democratic Unionist Party,1984,269
+Democratic Unionist Party,1985,130
+Democratic Unionist Party,1987,95
+Democratic Unionist Party,1988,178
+Democratic Unionist Party,1989,182
+Democratic Unionist Party,1990,197
+Democratic Unionist Party,1991,224
+Democratic Unionist Party,1992,229
+Democratic Unionist Party,1993,183
+Democratic Unionist Party,1994,208
+Democratic Unionist Party,1995,64
+Democratic Unionist Party,1996,239
+Democratic Unionist Party,1997,99
+Democratic Unionist Party,1998,158
+Democratic Unionist Party,1999,26
+Democratic Unionist Party,2000,40
+Democratic Unionist Party,2001,119
+Democratic Unionist Party,2002,118
+Democratic Unionist Party,2003,290
+Democratic Unionist Party,2004,159
+Democratic Unionist Party,2005,517
+Democratic Unionist Party,2006,743
+Democratic Unionist Party,2007,222
+Democratic Unionist Party,2008,215
+Democratic Unionist Party,2009,273
+Democratic Unionist Party,2010,465
+Democratic Unionist Party,2011,701
+Democratic Unionist Party,2012,652
+Democratic Unionist Party,2013,931
+Democratic Unionist Party,2014,755
+Democratic Unionist Party,2015,855
+Democratic Unionist Party,2016,775
+Democratic Unionist Party,2017,767
+Democratic Unionist Party,2018,1170
+Democratic Unionist Party,2019,1318
+Democratic Unionist Party,2020,972
+Democratic Unionist Party,2021,261
+Green Party,2010,114
+Green Party,2011,163
+Green Party,2012,152
+Green Party,2013,277
+Green Party,2014,208
+Green Party,2015,155
+Green Party,2016,138
+Green Party,2017,135
+Green Party,2018,116
+Green Party,2019,131
+Green Party,2020,110
+Green Party,2021,21
+Independent,1979,227
+Independent,1980,991
+Independent,1981,660
+Independent,1982,764
+Independent,1983,364
+Independent,1993,10
+Independent,1994,53
+Independent,1996,30
+Independent,1997,21
+Independent,1998,27
+Independent,1999,32
+Independent,2000,77
+Independent,2001,20
+Independent,2002,11
+Independent,2003,25
+Independent,2004,27
+Independent,2005,13
+Independent,2006,43
+Independent,2007,47
+Independent,2008,140
+Independent,2009,381
+Independent,2010,361
+Independent,2011,324
+Independent,2012,104
+Independent,2013,191
+Independent,2014,174
+Independent,2015,113
+Independent,2016,150
+Independent,2017,224
+Independent,2018,427
+Independent,2019,1132
+Independent,2020,248
+Independent,2021,81
+Independent Conservative,1994,43
+Independent Conservative,1995,260
+Independent Conservative,1996,6
+Independent Conservative,1997,53
+Independent Conservative,1998,112
+Independent Conservative,1999,115
+Independent Conservative,2000,184
+Independent Conservative,2001,106
+Independent Conservative,2002,188
+Independent Conservative,2003,116
+Independent Conservative,2004,124
+Independent Conservative,2005,12
+Independent Conservative,2009,4
+Independent Labour,1979,30
+Independent Labour,1980,26
+Independent Labour,1981,18
+Independent Labour,1982,72
+Independent Labour,1987,4
+Independent Labour,1988,14
+Independent Labour,1990,102
+Independent Labour,1991,23
+Independent Labour,1992,33
+Independent Labour,1997,1
+Independent Labour,1998,4
+Independent Labour,2000,4
+Independent Labour,2006,2
+Independent Labour,2007,17
+Independent Labour,2009,21
+Independent SDP,1990,34
+Independent SDP,1991,76
+Independent SDP,1992,9
+Independent Socialist,1979,73
+Independent Socialist,1980,85
+Independent Socialist,1981,67
+Independent Socialist,1982,114
+Independent Socialist,1983,47
+Independent Unionist,1979,54
+Independent Unionist,2003,88
+Independent Unionist,2004,1
+Labour,1979,10544
+Labour,1980,21449
+Labour,1981,17565
+Labour,1982,18199
+Labour,1983,15822
+Labour,1984,19753
+Labour,1985,19164
+Labour,1986,19892
+Labour,1987,17311
+Labour,1988,23259
+Labour,1989,23490
+Labour,1990,22054
+Labour,1991,18482
+Labour,1992,15443
+Labour,1993,18635
+Labour,1994,17196
+Labour,1995,16797
+Labour,1996,16620
+Labour,1997,19745
+Labour,1998,31986
+Labour,1999,28274
+Labour,2000,28835
+Labour,2001,23576
+Labour,2002,26023
+Labour,2003,28218
+Labour,2004,28454
+Labour,2005,23423
+Labour,2006,26344
+Labour,2007,26797
+Labour,2008,28182
+Labour,2009,25318
+Labour,2010,21923
+Labour,2011,19498
+Labour,2012,17257
+Labour,2013,19039
+Labour,2014,16986
+Labour,2015,14313
+Labour,2016,14294
+Labour,2017,13194
+Labour,2018,15970
+Labour,2019,13543
+Labour,2020,10813
+Labour,2021,3079
+Labour (Co-op),1979,316
+Labour (Co-op),1980,809
+Labour (Co-op),1981,662
+Labour (Co-op),1982,669
+Labour (Co-op),1983,549
+Labour (Co-op),1984,492
+Labour (Co-op),1985,466
+Labour (Co-op),1986,417
+Labour (Co-op),1987,270
+Labour (Co-op),1988,324
+Labour (Co-op),1989,349
+Labour (Co-op),1990,224
+Labour (Co-op),1991,289
+Labour (Co-op),1992,305
+Labour (Co-op),1993,331
+Labour (Co-op),1994,400
+Labour (Co-op),1995,329
+Labour (Co-op),1996,492
+Labour (Co-op),1997,833
+Labour (Co-op),1998,1276
+Labour (Co-op),1999,1190
+Labour (Co-op),2000,869
+Labour (Co-op),2001,1043
+Labour (Co-op),2002,1647
+Labour (Co-op),2003,1895
+Labour (Co-op),2004,2031
+Labour (Co-op),2005,1797
+Labour (Co-op),2006,1655
+Labour (Co-op),2007,1860
+Labour (Co-op),2008,1979
+Labour (Co-op),2009,1809
+Labour (Co-op),2010,2205
+Labour (Co-op),2011,2744
+Labour (Co-op),2012,2416
+Labour (Co-op),2013,3329
+Labour (Co-op),2014,2342
+Labour (Co-op),2015,2028
+Labour (Co-op),2016,1778
+Labour (Co-op),2017,2675
+Labour (Co-op),2018,3415
+Labour (Co-op),2019,2758
+Labour (Co-op),2020,1771
+Labour (Co-op),2021,430
+Liberal,1979,603
+Liberal,1980,1522
+Liberal,1981,1221
+Liberal,1982,1019
+Liberal,1983,1261
+Liberal,1984,2488
+Liberal,1985,2394
+Liberal,1986,2668
+Liberal,1987,1764
+Liberal,1988,503
+Liberal Democrat,1987,77
+Liberal Democrat,1988,1799
+Liberal Democrat,1989,2223
+Liberal Democrat,1990,2398
+Liberal Democrat,1991,2112
+Liberal Democrat,1992,1492
+Liberal Democrat,1993,2074
+Liberal Democrat,1994,1979
+Liberal Democrat,1995,1967
+Liberal Democrat,1996,2118
+Liberal Democrat,1997,2619
+Liberal Democrat,1998,4600
+Liberal Democrat,1999,4236
+Liberal Democrat,2000,4569
+Liberal Democrat,2001,3476
+Liberal Democrat,2002,4336
+Liberal Democrat,2003,4566
+Liberal Democrat,2004,4760
+Liberal Democrat,2005,4030
+Liberal Democrat,2006,4514
+Liberal Democrat,2007,4942
+Liberal Democrat,2008,5452
+Liberal Democrat,2009,5231
+Liberal Democrat,2010,6354
+Liberal Democrat,2011,6647
+Liberal Democrat,2012,6438
+Liberal Democrat,2013,7124
+Liberal Democrat,2014,5645
+Liberal Democrat,2015,2077
+Liberal Democrat,2016,878
+Liberal Democrat,2017,1186
+Liberal Democrat,2018,1573
+Liberal Democrat,2019,1454
+Liberal Democrat,2020,1208
+Liberal Democrat,2021,337
+Plaid Cymru,1979,106
+Plaid Cymru,1980,204
+Plaid Cymru,1981,184
+Plaid Cymru,1982,187
+Plaid Cymru,1983,143
+Plaid Cymru,1984,189
+Plaid Cymru,1985,205
+Plaid Cymru,1986,252
+Plaid Cymru,1987,213
+Plaid Cymru,1988,343
+Plaid Cymru,1989,199
+Plaid Cymru,1990,263
+Plaid Cymru,1991,183
+Plaid Cymru,1992,168
+Plaid Cymru,1993,337
+Plaid Cymru,1994,344
+Plaid Cymru,1995,288
+Plaid Cymru,1996,363
+Plaid Cymru,1997,288
+Plaid Cymru,1998,546
+Plaid Cymru,1999,177
+Plaid Cymru,2000,314
+Plaid Cymru,2001,367
+Plaid Cymru,2002,484
+Plaid Cymru,2003,415
+Plaid Cymru,2004,347
+Plaid Cymru,2005,309
+Plaid Cymru,2006,389
+Plaid Cymru,2007,166
+Plaid Cymru,2008,218
+Plaid Cymru,2009,158
+Plaid Cymru,2010,212
+Plaid Cymru,2011,336
+Plaid Cymru,2012,221
+Plaid Cymru,2013,301
+Plaid Cymru,2014,455
+Plaid Cymru,2015,209
+Plaid Cymru,2016,408
+Plaid Cymru,2017,247
+Plaid Cymru,2018,370
+Plaid Cymru,2019,247
+Plaid Cymru,2020,283
+Plaid Cymru,2021,65
+Referendum,1997,1
+Respect,2005,20
+Respect,2006,8
+Respect,2007,38
+Respect,2008,11
+Respect,2009,7
+Respect,2010,5
+Respect,2012,2
+Respect,2013,29
+Respect,2014,6
+Respect,2015,18
+Scottish National Party,1979,134
+Scottish National Party,1980,267
+Scottish National Party,1981,271
+Scottish National Party,1982,188
+Scottish National Party,1983,184
+Scottish National Party,1984,223
+Scottish National Party,1985,234
+Scottish National Party,1986,224
+Scottish National Party,1987,262
+Scottish National Party,1988,494
+Scottish National Party,1989,546
+Scottish National Party,1990,539
+Scottish National Party,1991,610
+Scottish National Party,1992,341
+Scottish National Party,1993,444
+Scottish National Party,1994,359
+Scottish National Party,1995,280
+Scottish National Party,1996,462
+Scottish National Party,1997,542
+Scottish National Party,1998,927
+Scottish National Party,1999,187
+Scottish National Party,2000,110
+Scottish National Party,2001,240
+Scottish National Party,2002,596
+Scottish National Party,2003,637
+Scottish National Party,2004,630
+Scottish National Party,2005,411
+Scottish National Party,2006,536
+Scottish National Party,2007,545
+Scottish National Party,2008,592
+Scottish National Party,2009,623
+Scottish National Party,2010,735
+Scottish National Party,2011,971
+Scottish National Party,2012,572
+Scottish National Party,2013,701
+Scottish National Party,2014,728
+Scottish National Party,2015,3758
+Scottish National Party,2016,5495
+Scottish National Party,2017,4255
+Scottish National Party,2018,4844
+Scottish National Party,2019,4311
+Scottish National Party,2020,3864
+Scottish National Party,2021,857
+Social Democratic & Labour Party,1983,24
+Social Democratic & Labour Party,1984,42
+Social Democratic & Labour Party,1985,39
+Social Democratic & Labour Party,1986,109
+Social Democratic & Labour Party,1987,128
+Social Democratic & Labour Party,1988,170
+Social Democratic & Labour Party,1989,145
+Social Democratic & Labour Party,1990,110
+Social Democratic & Labour Party,1991,107
+Social Democratic & Labour Party,1992,147
+Social Democratic & Labour Party,1993,166
+Social Democratic & Labour Party,1994,138
+Social Democratic & Labour Party,1995,87
+Social Democratic & Labour Party,1996,150
+Social Democratic & Labour Party,1997,101
+Social Democratic & Labour Party,1998,127
+Social Democratic & Labour Party,1999,43
+Social Democratic & Labour Party,2000,64
+Social Democratic & Labour Party,2001,20
+Social Democratic & Labour Party,2002,65
+Social Democratic & Labour Party,2003,126
+Social Democratic & Labour Party,2004,65
+Social Democratic & Labour Party,2005,73
+Social Democratic & Labour Party,2006,269
+Social Democratic & Labour Party,2007,90
+Social Democratic & Labour Party,2008,87
+Social Democratic & Labour Party,2009,157
+Social Democratic & Labour Party,2010,256
+Social Democratic & Labour Party,2011,176
+Social Democratic & Labour Party,2012,235
+Social Democratic & Labour Party,2013,359
+Social Democratic & Labour Party,2014,240
+Social Democratic & Labour Party,2015,322
+Social Democratic & Labour Party,2016,284
+Social Democratic & Labour Party,2017,112
+Social Democratic & Labour Party,2019,4
+Social Democratic & Labour Party,2020,72
+Social Democratic & Labour Party,2021,28
+Social Democratic Party,1979,182
+Social Democratic Party,1980,633
+Social Democratic Party,1981,674
+Social Democratic Party,1982,1789
+Social Democratic Party,1983,1099
+Social Democratic Party,1984,772
+Social Democratic Party,1985,737
+Social Democratic Party,1986,749
+Social Democratic Party,1987,478
+Social Democratic Party,1988,105
+Social Democratic Party,1989,105
+Social Democratic Party,1990,38
+The Independent Group for Change,2019,155
+UK Independence Party,2008,98
+UK Independence Party,2014,101
+UK Independence Party,2015,101
+UK Independence Party,2016,28
+UK Independence Party,2017,12
+Ulster Popular Unionist Party,1980,86
+Ulster Popular Unionist Party,1981,112
+Ulster Popular Unionist Party,1982,56
+Ulster Popular Unionist Party,1983,22
+Ulster Popular Unionist Party,1984,8
+Ulster Popular Unionist Party,1985,6
+Ulster Popular Unionist Party,1987,38
+Ulster Popular Unionist Party,1988,74
+Ulster Popular Unionist Party,1989,64
+Ulster Popular Unionist Party,1990,61
+Ulster Popular Unionist Party,1991,46
+Ulster Popular Unionist Party,1992,53
+Ulster Popular Unionist Party,1993,28
+Ulster Popular Unionist Party,1994,20
+Ulster Popular Unionist Party,1995,6
+Ulster Progressive Unionist Party,1980,21
+Ulster Unionist Party,1979,342
+Ulster Unionist Party,1980,469
+Ulster Unionist Party,1981,435
+Ulster Unionist Party,1982,866
+Ulster Unionist Party,1983,500
+Ulster Unionist Party,1984,848
+Ulster Unionist Party,1985,680
+Ulster Unionist Party,1986,173
+Ulster Unionist Party,1987,314
+Ulster Unionist Party,1988,476
+Ulster Unionist Party,1989,509
+Ulster Unionist Party,1990,484
+Ulster Unionist Party,1991,539
+Ulster Unionist Party,1992,570
+Ulster Unionist Party,1993,723
+Ulster Unionist Party,1994,620
+Ulster Unionist Party,1995,595
+Ulster Unionist Party,1996,757
+Ulster Unionist Party,1997,549
+Ulster Unionist Party,1998,711
+Ulster Unionist Party,1999,378
+Ulster Unionist Party,2000,743
+Ulster Unionist Party,2001,251
+Ulster Unionist Party,2002,414
+Ulster Unionist Party,2003,532
+Ulster Unionist Party,2004,340
+Ulster Unionist Party,2005,156
+Ulster Unionist Party,2006,180
+Ulster Unionist Party,2007,33
+Ulster Unionist Party,2009,1
+Ulster Unionist Party,2010,7
+Ulster Unionist Party,2015,93
+Ulster Unionist Party,2016,156
+Ulster Unionist Party,2017,75
+United Kingdom Unionist,1995,10
+United Kingdom Unionist,1996,86
+United Kingdom Unionist,1997,48
+United Kingdom Unionist,1998,159
+United Kingdom Unionist,1999,28
+United Kingdom Unionist,2000,57
+United Kingdom Unionist,2001,8
+United Ulster Unionist Party,1979,11
+United Ulster Unionist Party,1980,9
+United Ulster Unionist Party,1981,10
+United Ulster Unionist Party,1982,19
