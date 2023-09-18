@@ -17,3 +17,6 @@ async def get_geo_data():
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
+# uvicorn main:app --reload
+# ... from inside /app to run the server
