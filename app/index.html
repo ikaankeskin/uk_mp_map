@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Map</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  </head>
+  <body>
+    <h1>Select party</h1>
+    <select id="party-select">
+      <option value="">--Please choose a party--</option>
+
+      <option value="Alba Party">Alba Party</option>
+
+      <option value="Alliance">Alliance</option>
+
+      <option value="Change UK - The Independent Group">
+        Change UK - The Independent Group
+      </option>
+
+      <option value="Conservative">Conservative</option>
+
+      <option value="Democratic Unionist Party">
+        Democratic Unionist Party
+      </option>
+
+      <option value="Green Party">Green Party</option>
+
+      <option value="Independent">Independent</option>
+
+      <option value="Labour">Labour</option>
+
+      <option value="Labour (Co-op)">Labour (Co-op)</option>
+
+      <option value="Liberal Democrat">Liberal Democrat</option>
+
+      <option value="Plaid Cymru">Plaid Cymru</option>
+
+      <option value="Scottish National Party">Scottish National Party</option>
+
+      <option value="Social Democratic & Labour Party">
+        Social Democratic & Labour Party
+      </option>
+
+      <option value="The Independent Group for Change">
+        The Independent Group for Change
+      </option>
+    </select>
+    <h1>Select Year</h1>
+    <label for="year-slider">Year Range: </label>
+    <input type="range" id="year-slider" />
+    <button id="clear-button">Clear Selection</button>
+    <button id="download-button">Download selected locations</button>
+    <button id="add-marker-button">Add Marker</button>
+    <div id="map" style="height: 80vh"></div>
+    <script>
+      let addMarkerMode = false;
+      let customIcon = L.icon({
+        iconUrl: "custom-icon.png",
+        iconSize: [38, 95],
+        iconAnchor: [22, 94],
+        popupAnchor: [-3, -76],
+      });
+
+      function convertToCSV(objArray) {
+        const array =
+          typeof objArray != "object" ? JSON.parse(objArray) : objArray;
+        let str = `${Object.keys(array[0])
+          .map((value) => `"${value}"`)
+          .join(",")}\r\n`;
+
+        for (let i = 0; i < array.length; i++) {
+          let line = "";
+          for (let index in array[i]) {
+            if (line !== "") line += ",";
+            line += `"${array[i][index]}"`;
+          }
+          str += line + "\r\n";
+        }
+        return str;
+      }
+
+      let selectedFeatures = [];
+      let selectedYear;
+
+      function createMap(geojson) {
+        let latitudes = geojson.features.map(
+          (feature) => feature.geometry.coordinates[1]
+        );
+        let longitudes = geojson.features.map(
+          (feature) => feature.geometry.coordinates[0]
+        );
+        let mapCenter = [
+          latitudes.reduce((a, b) => a + b, 0) / latitudes.length,
+          longitudes.reduce((a, b) => a + b, 0) / longitudes.length,
+        ];
+
+        let map = L.map("map").setView(mapCenter, 10);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        return map;
+      }
+      let markers = L.layerGroup();
+
+      function loadMarkers(map, geojson, selected_party) {
+        function updateMarkers() {
+          markers.clearLayers();
+
+          if (selected_party !== "") {
+            geojson.features.forEach((feature) => {
+              if (
+                feature.properties.party === selected_party &&
+                feature.properties.year === selectedYear
+              ) {
+                let coordinates = feature.geometry.coordinates;
+                let latLng = L.latLng(coordinates[1], coordinates[0]);
+                if (map.getBounds().contains(latLng)) {
+                  let marker = L.marker(latLng, {
+                    opacity: selectedFeatures.includes(feature) ? 1 : 0.5,
+                  });
+
+                  let popupContent = `
+                                <p><strong>Party:</strong> ${feature.properties.party}</p>
+                                <p><strong>Constituency:</strong> ${feature.properties.constituency}</p>
+                                <p><strong>Name:</strong> ${feature.properties.name}</p>
+                                <p><strong>Year:</strong> ${feature.properties.year}</p>
+                            `;
+
+                  marker.bindPopup(popupContent);
+                  markers.addLayer(marker);
+
+                  marker.on("click", function () {
+                    if (this.options.opacity !== 1) {
+                      this.setOpacity(1);
+                      selectedFeatures.push(feature);
+                    } else {
+                      this.setOpacity(0.5);
+                      selectedFeatures = selectedFeatures.filter(
+                        (f) => f !== feature
+                      );
+                    }
+                  });
+                }
+              }
+            });
+          }
+        }
+
+        map.on("moveend", updateMarkers);
+        updateMarkers();
+      }
+
+      let map = createMap(geojson);
+      markers.addTo(map);
+
+      map.on("click", function (e) {
+        if (addMarkerMode) {
+          let marker = L.marker(e.latlng, { icon: customIcon }).addTo(map);
+          marker.bindPopup(
+            '<input type="text" id="input-field" placeholder="Enter some info">'
+          );
+        }
+      });
+
+      document
+        .getElementById("party-select")
+        .addEventListener("change", function () {
+          let selected_party = this.value;
+          let filtered_geojson = {
+            type: "FeatureCollection",
+            features: geojson.features.filter(
+              (feature) => feature.properties.party === selected_party
+            ),
+          };
+          loadMarkers(map, filtered_geojson, selected_party);
+        });
+
+      document
+        .getElementById("download-button")
+        .addEventListener("click", function () {
+          let csv = convertToCSV(
+            selectedFeatures.map((feature) => feature.properties)
+          );
+
+          let downloadLink = document.createElement("a");
+          downloadLink.href = "data:text/csv;charset=utf-8," + encodeURI(csv);
+          downloadLink.target = "_blank";
+          downloadLink.download = "selected_locations.csv";
+          document.body.appendChild(downloadLink);
+          downloadLink.click();
+          document.body.removeChild(downloadLink);
+        });
+
+      document
+        .getElementById("clear-button")
+        .addEventListener("click", function () {
+          selectedFeatures = [];
+          markers.eachLayer(function (layer) {
+            layer.setOpacity(0.5);
+          });
+        });
+
+      document
+        .getElementById("add-marker-button")
+        .addEventListener("click", function () {
+          addMarkerMode = !addMarkerMode;
+        });
+
+      // Calculate the minimum and maximum years from the dataset
+      let years = geojson.features.map((feature) =>
+        parseInt(feature.properties.year)
+      ); // Make sure years are integers
+      let minYear = Math.min(...years);
+      let maxYear = Math.max(...years);
+
+      selectedYear = maxYear;
+
+      // Set the min and max attributes of the slider dynamically
+      let yearSlider = document.getElementById("year-slider");
+      yearSlider.setAttribute("min", minYear);
+      yearSlider.setAttribute("max", maxYear);
+      yearSlider.value = maxYear;
+
+      // Add a label to display the current year
+      let yearLabel = document.createElement("span");
+      yearLabel.id = "year-label";
+      yearLabel.innerHTML = maxYear;
+      yearSlider.insertAdjacentElement("afterend", yearLabel);
+
+      document
+        .getElementById("year-slider")
+        .addEventListener("input", function () {
+          selectedYear = parseInt(this.value); // Convert to integer to ensure type consistency
+          document.getElementById("year-label").innerHTML = selectedYear;
+          let selected_party = document.getElementById("party-select").value;
+          let filtered_geojson = {
+            type: "FeatureCollection",
+            features: geojson.features.filter(
+              (feature) =>
+                feature.properties.party === selected_party &&
+                parseInt(feature.properties.year) === selectedYear
+            ), // Convert feature year to integer
+          };
+          loadMarkers(map, filtered_geojson, selected_party);
+        });
+    </script>
+  </body>
+</html>
