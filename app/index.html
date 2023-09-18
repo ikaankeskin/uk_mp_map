@@ -157,6 +157,31 @@
         updateMarkers();
       }
 
+      let geojson = {
+        features: [
+          {
+            geometry: { coordinates: [-6.20169, 54.67457], type: "Point" },
+            properties: {
+              constituency: "South Antrim",
+              name: "Paul Girvan",
+              party: "Democratic Unionist Party",
+              year: 2019,
+            },
+            type: "Feature",
+          },
+          {
+            geometry: { coordinates: [-6.20169, 54.67457], type: "Point" },
+            properties: {
+              constituency: "South Antrim",
+              name: "Paul Girvan",
+              party: "Democratic Unionist Party",
+              year: 2019,
+            },
+            type: "Feature",
+          },
+        ],
+      };
+
       let map = createMap(geojson);
       markers.addTo(map);
 
